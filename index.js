@@ -15,9 +15,18 @@ const serpmeKahvalti = {isim: "Serpme Kahvaltı", fiyat: 16, kategori:"Kahvaltı
 */
 
 
-function MenuElemaniOlustur(/*Kodlar buraya*/){
-	/*Kodlar buraya*/
+function MenuElemaniOlustur(ismi , fiyati , kategorisi){
+ const nesne = {
+	isim: ismi ,
+	fiyat: fiyati ,
+	kategori: kategorisi
+
 }
+return nesne
+
+}
+console.log("Çay: " , MenuElemaniOlustur("Çay" , 4 , "İçecekler"))
+console.log("Serpme Kahvaltı: " , MenuElemaniOlustur("Serpme Kahvalrı" , 16 , "Kahvaltı"))
 
 
 
@@ -30,6 +39,10 @@ function MenuElemaniOlustur(/*Kodlar buraya*/){
 	
 	Örnek: MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar") şunu döndürür: {isim:"Karışık Pizza",fiyat:5,kategori:"Pizzalar"}
 */
+console.log("Cheeseburger" , MenuElemaniOlustur('Cheeseburger', 8, 'Burgerler'))
+console.log("Karışık Pizza" , MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar"))
+console.log("Adana" , MenuElemaniOlustur("Adana",7,"Kebaplar"))
+
 
 
 
@@ -51,7 +64,23 @@ const burger = {
 	fiyat: 18, 
 	kategori: "Öğle Yemeği", 
 
+
 }
+burger.indirim = function (meslek) {
+	if (meslek == "öğretmen" || meslek == "öğrenci"){
+		return burger.fiyat * 0.75
+	}
+	else if (meslek == "diğer"){
+		return burger.fiyat * 0.90
+	}
+else {
+	return burger.fiyat
+}
+
+	
+}
+
+console.log("öğretmen indirimi :" , burger.indirim("öğretmen"))
 
 
 
@@ -73,13 +102,16 @@ const degerlendirmeler = [
 */
 
 
+console.log ("Ahmet'in Yorumu :" , degerlendirmeler[5].geribildirim)
+
 
 /*  Görev 4 (ototest yok):  
 	Reyna'nın geribildirimi girilmemiş! Aşağıdakileri uygulayın: (fonksiyona gerek yok) 
 	1. Bu geribildirimi Reyna'nın değerlendirmesine ekleyin - "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
 	2. degerlendirmeler dizisini konsolda görüntüleyerek çalışmanızı kontrol edin
 */
-
+degerlendirmeler[7].geribildirim = "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
+console.log("Reyna'nın yorumu  :" , degerlendirmeler[7].geribildirim)
 
 
 /*  Görev 5: 
@@ -93,13 +125,19 @@ const degerlendirmeler = [
 	4. Güncellenmiş diziyi döndürecek
 */
 
+function DegerledirmeEkle(degerlendirmeler , ismi , puani , geribildirimi){
+	const nesne = {
+			isim: ismi, 
+			puan: puani,
+			geribildirim: geribildirimi 
+	} 
 
-function DegerledirmeEkle(/*Kodlar buraya */){
-	/*Kodlar buraya */
-	
+	degerlendirmeler.push(nesne)
+	return degerlendirmeler
+
 }
 
-
+console.log("görev 5 :" , DegerledirmeEkle(degerlendirmeler, 'Hurşut', 2, 'Boktan yemekler!'))
 
 /*  Görev 6: 
 	Dizideki değerlendirmelerin anahtarına(key,index) bağlı olarak bir değerlendirme döndüren bir fonksiyon yazın
@@ -112,11 +150,16 @@ function DegerledirmeEkle(/*Kodlar buraya */){
 */
 
 
-function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
+function AnahtardanDegerlendirmeAl(dizi , diziAnahtari) {
+	const a = dizi[diziAnahtari].isim  ;
+	const b = dizi[diziAnahtari].puan  ;
+	const c = dizi[diziAnahtari].geribildirim ;
 
-}
+	return a + " isimli kişi " + b + " puan verdi ve şunları yazdı: " + c
 
+} 	
+
+console.log (AnahtardanDegerlendirmeAl(degerlendirmeler,0))
 
 
 /*  Görev 7:  
@@ -132,10 +175,14 @@ function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
 */
 
 
-function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
-} 
+ function SonDegerlendirmeyiAl(dizi) {
+	const a = dizi[dizi.length-1].isim  ;
+	const b = dizi[dizi.length-1].puan  ;
+	const c = dizi[dizi.length-1].geribildirim ;
 
+	return a + " isimli kişi " + b + " puan verdi ve şunları yazdı: " + c
+} 
+console.log(SonDegerlendirmeyiAl(degerlendirmeler))
 
 
 /////////////// BONUS  GÖRVLER////////////////////
